@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بادکنک‌ساز — تایپ‌ست فارسی برای بادکنک بیضی</title>
+<meta name="description" content="متن فارسی را برای بادکنک‌های بیضی مانگا و مانهوا بازآرایی کنید.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #ECE7DC;
+    --paper-deep: #E1DBCB;
+    --ink: #1C1815;
+    --ink-soft: #58524A;
+    --ink-faint: #86806F;
+    --tone: #C7BFA9;
+    --tone-line: #D3CCBA;
+    --blue: #3D6C8E;
+    --blue-soft: #CBDCE4;
+    --red: #A93A2C;
+    --red-deep: #7E2B20;
+    --white: #FBF9F4;
+    --amber: #A8792F;
+    --amber-soft: #EDE0C4;
+    --radius-sm: 7px;
+    --radius-md: 16px;
+    --font-display: 'Lalezar', 'Vazirmatn', sans-serif;
+    --font-body: 'Vazirmatn', sans-serif;
+    --shadow-soft: 0 1px 0 rgba(28, 24, 21, 0.06), 0 6px 18px -12px rgba(28, 24, 21, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html { color-scheme: light; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--blue-soft); color: var(--ink); }
+
+  :focus-visible {
+    outline: 2.5px solid var(--blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .page { max-width: 760px; margin: 0 auto; padding: 0 20px 64px; }
+
+  /* ---------- Header ---------- */
+
+  .site-header {
+    position: relative;
+    padding: 46px 8px 30px;
+    text-align: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .site-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: radial-gradient(var(--tone) 1.15px, transparent 1.15px);
+    background-size: 13px 13px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 100% at 50% 0%, black 35%, transparent 90%);
+            mask-image: radial-gradient(ellipse 70% 100% at 50% 0%, black 35%, transparent 90%);
+    opacity: 0.55;
+  }
+
+  .eyebrow { display: inline-block; font-size: 12.5px; letter-spacing: 0.14em; color: var(--ink-faint); margin: 0 0 10px; }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 9vw, 58px);
+    line-height: 1;
+    margin: 0;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  .title .accent { color: var(--red); }
+
+  .subtitle { margin: 14px auto 0; max-width: 46ch; color: var(--ink-soft); font-size: 15px; }
+
+  /* ---------- Panels ---------- */
+
+  .panel {
+    background: var(--white);
+    border: 1px solid var(--tone-line);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    padding: 26px;
+    margin-bottom: 22px;
+  }
+  @media (max-width: 520px) { .panel { padding: 20px 16px; } }
+
+  .field-label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 10px; color: var(--ink); }
+
+  textarea#text-input {
+    width: 100%;
+    resize: vertical;
+    min-height: 108px;
+    background: var(--paper);
+    border: 1px solid var(--tone-line);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--ink);
+    direction: rtl;
+    line-height: 1.8;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  textarea#text-input:focus { background: var(--white); border-color: var(--blue); }
+  textarea#text-input::placeholder { color: var(--ink-faint); }
+
+  /* ---------- Settings ---------- */
+
+  .settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 22px 26px;
+    margin: 24px 0 6px;
+    padding-top: 22px;
+    border-top: 1px dashed var(--tone-line);
+  }
+
+  .settings-heading { grid-column: 1 / -1; font-size: 12.5px; letter-spacing: 0.08em; color: var(--ink-faint); margin: -8px 0 -4px; }
+
+  .setting-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .setting-label { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+  .setting-label.small { font-size: 12.5px; color: var(--ink-soft); font-weight: 500; }
+
+  .setting-value {
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 600;
+    background: var(--blue-soft);
+    padding: 1px 9px;
+    border-radius: 999px;
+  }
+
+  select#line-count {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--tone-line);
+    border-radius: var(--radius-sm);
+    padding: 9px 12px;
+    cursor: pointer;
+  }
+  select#line-count:focus { border-color: var(--blue); }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--tone-line);
+    outline-offset: 6px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 17px; height: 17px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 1px var(--blue);
+    cursor: pointer;
+    margin-top: -6.5px;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 15px; height: 15px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 1px var(--blue);
+    cursor: pointer;
+  }
+
+  .setting-scale { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-faint); margin-top: 6px; }
+
+  .setting-toggle { display: flex; align-items: center; justify-content: space-between; }
+
+  .switch { position: relative; display: inline-block; width: 44px; height: 25px; }
+  .switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+  .switch-track { position: absolute; inset: 0; background: var(--tone-line); border-radius: 999px; transition: background 0.18s ease; cursor: pointer; }
+  .switch-thumb {
+    position: absolute; top: 3px; right: 3px;
+    width: 19px; height: 19px;
+    background: var(--white);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    transition: transform 0.18s ease;
+  }
+  .switch input:checked + .switch-track { background: var(--blue); }
+  .switch input:checked + .switch-track .switch-thumb { transform: translateX(-19px); }
+  .switch input:focus-visible + .switch-track { outline: 2.5px solid var(--blue); outline-offset: 2px; }
+
+  /* ---------- Stamp button ---------- */
+
+  .stamp-row { display: flex; justify-content: center; margin-top: 28px; }
+
+  .stamp-button {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    background: var(--red);
+    border: none;
+    border-radius: 10px 12px 11px 13px;
+    padding: 12px 46px;
+    cursor: pointer;
+    transform: rotate(-1deg);
+    box-shadow: 0 5px 0 var(--red-deep), 0 10px 16px -8px rgba(126, 43, 32, 0.6);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .stamp-button:hover { transform: rotate(0deg) translateY(-1px); }
+  .stamp-button:active { transform: rotate(0deg) translateY(3px); box-shadow: 0 2px 0 var(--red-deep), 0 4px 10px -6px rgba(126, 43, 32, 0.6); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stamp-button { transition: none; transform: none; }
+    .stamp-button:hover, .stamp-button:active { transform: none; }
+  }
+
+  /* ---------- Output panel ---------- */
+
+  .output-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+  .output-head h2 { font-size: 16px; margin: 0; color: var(--ink); }
+  .output-stats { font-size: 12.5px; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+
+  .output-note {
+    font-size: 12.5px;
+    color: var(--amber);
+    background: var(--amber-soft);
+    border-radius: var(--radius-sm);
+    padding: 7px 12px;
+    margin-bottom: 16px;
+    display: none;
+  }
+  .output-note.is-visible { display: block; }
+
+  .bubble-preview { position: relative; width: 100%; aspect-ratio: 4 / 3; margin-bottom: 22px; }
+  .bubble-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .bubble-svg path { fill: var(--white); stroke: var(--ink); stroke-width: 2.5; }
+
+  .bubble-text {
+    position: absolute; top: 8%; bottom: 26%; right: 16%; left: 16%;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; direction: rtl; white-space: pre-line;
+    color: var(--ink); overflow: hidden;
+  }
+  .bubble-text[data-empty="true"] { color: var(--ink-faint); font-size: 14px !important; line-height: 1.7; }
+
+  .output-raw-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 10px; flex-wrap: wrap; }
+  .output-raw-head span { font-size: 12.5px; color: var(--ink-soft); }
+
+  .output-text {
+    margin: 0;
+    background: var(--paper);
+    border: 1px solid var(--tone-line);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    direction: rtl;
+    text-align: center;
+    white-space: pre-line;
+    color: var(--ink);
+    min-height: 40px;
+  }
+  .output-text:empty::before { content: "خروجی اینجا نمایش داده می‌شود"; color: var(--ink-faint); font-size: 13.5px; }
+
+  .copy-button {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--blue);
+    background: var(--blue-soft);
+    border: none;
+    border-radius: 999px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .copy-button:hover { background: var(--blue); color: var(--white); }
+  .copy-button:disabled { opacity: 0.45; cursor: not-allowed; }
+  .copy-button.is-copied { background: var(--ink); color: var(--white); }
+
+  /* ---------- Display-only preview settings ---------- */
+
+  .display-settings {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px dashed var(--tone-line);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .display-controls { display: flex; gap: 10px; align-items: center; }
+  #preview-font {
+    font-family: var(--font-body); font-size: 13px; color: var(--ink);
+    background: var(--paper); border: 1px solid var(--tone-line);
+    border-radius: var(--radius-sm); padding: 6px 10px;
+  }
+  #preview-size { width: 100px; }
+
+  /* ---------- Footer ---------- */
+
+  .site-footer { text-align: center; font-size: 12.5px; color: var(--ink-faint); margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="site-header">
+    <p class="eyebrow">ابزار تایپ‌ست مانگا و مانهوا</p>
+    <h1 class="title">بادکنک<span class="accent">‌</span>ساز</h1>
+    <p class="subtitle">متن فارسی را بنویسید تا به شکل یک بادکنک بیضی برای Photoshop یا Photopea چیده شود.</p>
+  </header>
+
+  <main class="workspace">
+
+    <section class="panel input-panel">
+      <label class="field-label" for="text-input">متن گفت‌وگو</label>
+      <textarea id="text-input" rows="4" placeholder="مثلاً: ولی از رنگ و روش پیداست که کلی انرژی درونی مصرف کرده"></textarea>
+
+      <div class="settings-grid">
+        <p class="settings-heading">تنظیمات چیدمان</p>
+
+        <div class="setting">
+          <div class="setting-head">
+            <span class="setting-label">تعداد خط</span>
+          </div>
+          <select id="line-count" aria-label="تعداد خط خروجی">
+            <option value="auto" selected>خودکار</option>
+            <option value="2">۲ خط</option>
+            <option value="3">۳ خط</option>
+            <option value="4">۴ خط</option>
+            <option value="5">۵ خط</option>
+            <option value="6">۶ خط</option>
+            <option value="7">۷ خط</option>
+            <option value="8">۸ خط</option>
+          </select>
+        </div>
+
+        <div class="setting">
+          <div class="setting-head">
+            <span class="setting-label">حداکثر کلمه در هر خط</span>
+            <span class="setting-value" id="maxwords-value">۶</span>
+          </div>
+          <input type="range" id="max-words" min="2" max="10" value="6" step="1"
+                 aria-label="حداکثر کلمه در هر خط">
+          <div class="setting-scale"><span>باریک و عمودی</span><span>پهن و افقی</span></div>
+        </div>
+
+        <div class="setting setting-toggle">
+          <span class="setting-label">کشیده‌نویسی خودکار</span>
+          <label class="switch">
+            <input type="checkbox" id="use-kashida" checked>
+            <span class="switch-track"><span class="switch-thumb"></span></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="stamp-row">
+        <button class="stamp-button" id="typeset-btn" type="button">بچین</button>
+      </div>
+    </section>
+
+    <section class="panel output-panel">
+      <div class="output-head">
+        <h2>پیش‌نمایش بادکنک</h2>
+        <div class="output-stats" id="output-stats" aria-live="polite"></div>
+      </div>
+
+      <div class="output-note" id="output-note" role="status"></div>
+
+      <div class="bubble-preview">
+        <svg class="bubble-svg" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M 200 8
+                   C 320 8 388 62 388 150
+                   C 388 234 316 288 205 292
+                   C 188 300 150 306 118 296
+                   C 130 284 138 272 142 262
+                   C 68 246 12 202 12 150
+                   C 12 62 80 8 200 8 Z" />
+        </svg>
+        <div class="bubble-text" id="bubble-text" data-empty="true">متن را بنویسید و «بچین» را بزنید</div>
+      </div>
+
+      <div class="output-raw">
+        <div class="output-raw-head">
+          <span>متن خروجی قابل کپی (برای Center Align در Photoshop)</span>
+          <button class="copy-button" id="copy-btn" type="button" disabled>کپی متن</button>
+        </div>
+        <pre class="output-text" id="output-text"></pre>
+      </div>
+
+      <div class="display-settings">
+        <span class="setting-label small">تنظیمات فقط‌نمایشی پیش‌نمایش (روی متن خروجی اثر ندارد)</span>
+        <div class="display-controls">
+          <select id="preview-font" aria-label="فونت پیش‌نمایش">
+            <option value="'Vazirmatn', sans-serif">وزیرمتن</option>
+            <option value="'Noto Naskh Arabic', serif">نسخ سنتی</option>
+          </select>
+          <input type="range" id="preview-size" min="14" max="30" value="19" step="1"
+                 aria-label="اندازه‌ی فونت پیش‌نمایش">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>همه‌ی پردازش‌ها در همین مرورگر انجام می‌شود؛ هیچ متنی به سروری ارسال نمی‌شود.</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =========================================================
+     بخش ۱: هسته‌ی الگوریتم چیدمان بیضی
+
+     منطق شکل:
+       ۲ خط: خط۱ <= خط۲
+       ۳ خط: خط۱ = خط۳ < خط۲
+       ۴ خط: خط۱ = خط۴ < خط۲ = خط۳
+       ۵ خط: خط۱ = خط۵ < خط۲ = خط۴ < خط۳
+       n>5 : همین الگو با رتبه‌های بیشتر ادامه پیدا می‌کند
+
+     این ترتیب با یک محدودیت سخت در برنامه‌نویسی پویا تضمین می‌شود:
+     بین هر دو خط پیاپی، جهتِ افزایش/کاهش از قبل بر اساس موقعیتشان
+     نسبت به مرکز مشخص است (نزدیک‌تر به مرکز = بزرگ‌تر)، و DP هرگز
+     تقسیمی را که این جهت را نقض کند انتخاب نمی‌کند.
+     ========================================================= */
+
+  var KASHIDA_CHAR = 'ـ';
+  var NON_CONNECTING_LETTERS = new Set('اآدذرزژوؤء'.split(''));
+  var PERSIAN_LETTERS = new Set(('ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی' + 'آأإئؤء').split(''));
+  var ARABIC_TO_PERSIAN = { 'ي': 'ی', 'ك': 'ک', 'ة': 'ه', 'ۀ': 'ه', 'ٱ': 'ا' };
+
+  function normalizeText(text) {
+    text = text.trim();
+    for (var ar in ARABIC_TO_PERSIAN) text = text.split(ar).join(ARABIC_TO_PERSIAN[ar]);
+    text = text.replace(/[ \t\n\r]+/g, ' ');
+    return text.trim();
+  }
+
+  function tokenize(text) {
+    return text.split(' ').filter(function (w) { return w !== ''; });
+  }
+
+  function findKashidaPositions(word) {
+    var positions = [];
+    var n = word.length;
+    if (n < 4) return positions;
+    for (var i = 1; i < n - 2; i++) {
+      var c1 = word[i], c2 = word[i + 1];
+      if (PERSIAN_LETTERS.has(c1) && PERSIAN_LETTERS.has(c2) && !NON_CONNECTING_LETTERS.has(c1)) {
+        positions.push(i);
+      }
+    }
+    return positions;
+  }
+
+  function applyKashida(word, amount) {
+    amount = amount || 1;
+    var positions = findKashidaPositions(word);
+    if (positions.length === 0) return word;
+    var center = word.length / 2;
+    positions.sort(function (a, b) { return Math.abs(a - center) - Math.abs(b - center); });
+    var chosen = positions.slice(0, Math.max(1, amount)).sort(function (a, b) { return a - b; });
+    var result = word, offset = 0;
+    for (var k = 0; k < chosen.length; k++) {
+      var idx = chosen[k] + 1 + offset;
+      result = result.slice(0, idx) + KASHIDA_CHAR + result.slice(idx);
+      offset += 1;
+    }
+    return result;
+  }
+
+  function rankOf(idx, n) { return Math.min(idx, n - 1 - idx); }
+
+  function rankTargetProfile(nLines, totalLength) {
+    if (nLines === 1) return [totalLength];
+    if (nLines === 2) return [totalLength * 0.47, totalLength * 0.53];
+    var weights = [];
+    for (var i = 0; i < nLines; i++) weights.push(1 + rankOf(i, nLines) * 0.7);
+    var totalW = weights.reduce(function (a, b) { return a + b; }, 0);
+    return weights.map(function (w) { return totalLength * (w / totalW); });
+  }
+
+  /* جهت اجباری بین خط idx و خط idx-1 (۰-پایه): 'up' یعنی باید >=، 'down' یعنی باید <=، 'flat' یعنی آزاد */
+  function buildDirections(nLines) {
+    var dirs = new Array(nLines).fill('flat');
+    if (nLines === 2) { dirs[1] = 'up'; return dirs; }
+    for (var idx = 1; idx < nLines; idx++) {
+      var rPrev = rankOf(idx - 1, nLines);
+      var rCur = rankOf(idx, nLines);
+      if (rCur > rPrev) dirs[idx] = 'up';
+      else if (rCur < rPrev) dirs[idx] = 'down';
+      else dirs[idx] = 'flat';
+    }
+    return dirs;
+  }
+
+  function lineVisualLength(words) {
+    if (words.length === 0) return 0;
+    return words.reduce(function (s, w) { return s + w.length; }, 0) + (words.length - 1);
+  }
+
+  function lineCost(words, targetLen, avgTarget, weights) {
+    var actual = lineVisualLength(words);
+    var diff = actual - targetLen;
+    var cost = weights.shapeWeight * diff * diff;
+    if (actual < avgTarget * 0.3) {
+      var d = avgTarget - actual;
+      cost += weights.extremeShortWeight * d * d;
+    }
+    return cost;
+  }
+
+  /* DP با اجرای سخت‌گیرانه‌ی ترتیب خطوط (نگه‌داشتن طول خط قبلی در حالتِ هر سلول) */
+  function dpOrderedPartition(words, nLines, maxWordsPerLine, weights) {
+    var m = words.length;
+    if (nLines > m || nLines < 1) return { feasible: false };
+
+    var totalLength = lineVisualLength(words);
+    var targets = rankTargetProfile(nLines, totalLength);
+    var avgTarget = totalLength / nLines;
+    var dirs = buildDirections(nLines);
+
+    var dp = [];
+    for (var k0 = 0; k0 <= nLines; k0++) dp.push(new Array(m + 1).fill(null));
+
+    for (var i0 = 1; i0 <= Math.min(maxWordsPerLine, m); i0++) {
+      var seg0 = words.slice(0, i0);
+      var L0 = lineVisualLength(seg0);
+      var C0 = lineCost(seg0, targets[0], avgTarget, weights);
+      dp[1][i0] = [{ start: 0, length: L0, cost: C0, predStart: null }];
+    }
+
+    for (var k = 2; k <= nLines; k++) {
+      var dir = dirs[k - 1];
+      for (var i = k; i <= m; i++) {
+        var jMin = Math.max(k - 1, i - maxWordsPerLine);
+        var entries = [];
+        for (var j = jMin; j < i; j++) {
+          var prevStates = dp[k - 1][j];
+          if (!prevStates) continue;
+
+          var seg = words.slice(j, i);
+          var Lk = lineVisualLength(seg);
+          var segCost = lineCost(seg, targets[k - 1], avgTarget, weights);
+
+          var bestPrevCost = Infinity, bestPredStart = null;
+          for (var pi = 0; pi < prevStates.length; pi++) {
+            var prev = prevStates[pi];
+            if (dir === 'up' && Lk < prev.length) continue;
+            if (dir === 'down' && Lk > prev.length) continue;
+            if (prev.cost < bestPrevCost) { bestPrevCost = prev.cost; bestPredStart = prev.start; }
+          }
+          if (bestPrevCost === Infinity) continue;
+
+          entries.push({ start: j, length: Lk, cost: bestPrevCost + segCost, predStart: bestPredStart });
+        }
+        dp[k][i] = entries.length > 0 ? entries : null;
+      }
+    }
+
+    var finalStates = dp[nLines][m];
+    if (!finalStates) return { feasible: false };
+
+    var best = finalStates[0];
+    for (var fi = 1; fi < finalStates.length; fi++) if (finalStates[fi].cost < best.cost) best = finalStates[fi];
+
+    var lineStarts = [];
+    var k2 = nLines, cur = best;
+    while (k2 >= 1) {
+      lineStarts.push(cur.start);
+      var nextI = cur.start;
+      if (k2 === 1) break;
+      var predStart = cur.predStart;
+      var prevStates2 = dp[k2 - 1][nextI];
+      var found = null;
+      for (var si = 0; si < prevStates2.length; si++) {
+        if (prevStates2[si].start === predStart) { found = prevStates2[si]; break; }
+      }
+      cur = found;
+      k2 -= 1;
+    }
+    lineStarts.reverse();
+
+    var lines = [];
+    for (var li = 0; li < lineStarts.length; li++) {
+      var start = lineStarts[li];
+      var end = li + 1 < lineStarts.length ? lineStarts[li + 1] : m;
+      lines.push(words.slice(start, end));
+    }
+
+    return { feasible: true, cost: best.cost, lines: lines };
+  }
+
+  /* DP نرم (بدون اجرای سخت‌گیرانه‌ی جهت) به‌عنوان راه‌حل جایگزین، وقتی حالت سخت‌گیرانه ممکن نباشد */
+  function dpSoftPartition(words, nLines, maxWordsPerLine, weights) {
+    var m = words.length;
+    if (nLines > m || nLines < 1) return { feasible: false };
+    var totalLength = lineVisualLength(words);
+    var targets = rankTargetProfile(nLines, totalLength);
+    var avgTarget = totalLength / nLines;
+    var INF = Infinity;
+
+    var dp = [], choice = [];
+    for (var a = 0; a <= nLines; a++) { dp.push(new Array(m + 1).fill(INF)); choice.push(new Array(m + 1).fill(-1)); }
+    dp[0][0] = 0;
+
+    for (var k = 1; k <= nLines; k++) {
+      for (var i = k; i <= m; i++) {
+        var bestCost = INF, bestJ = -1;
+        var jMin = Math.max(k - 1, i - maxWordsPerLine);
+        for (var j = jMin; j < i; j++) {
+          if (dp[k - 1][j] === INF) continue;
+          var seg = words.slice(j, i);
+          var c = dp[k - 1][j] + lineCost(seg, targets[k - 1], avgTarget, weights);
+          if (c < bestCost) { bestCost = c; bestJ = j; }
+        }
+        dp[k][i] = bestCost; choice[k][i] = bestJ;
+      }
+    }
+    if (dp[nLines][m] === INF) return { feasible: false };
+
+    var lines = [];
+    var i2 = m;
+    for (var k2 = nLines; k2 >= 1; k2--) { var j2 = choice[k2][i2]; lines.push(words.slice(j2, i2)); i2 = j2; }
+    lines.reverse();
+    return { feasible: true, cost: dp[nLines][m], lines: lines };
+  }
+
+  function partitionInto(words, nLines, maxWordsPerLine, weights) {
+    var strict = dpOrderedPartition(words, nLines, maxWordsPerLine, weights);
+    if (strict.feasible) { strict.strict = true; return strict; }
+    var soft = dpSoftPartition(words, nLines, maxWordsPerLine, weights);
+    if (soft.feasible) { soft.strict = false; return soft; }
+    return { feasible: false };
+  }
+
+  function refineWithKashida(lines, maxKashidaPerLine) {
+    maxKashidaPerLine = maxKashidaPerLine || 1;
+    var lengths = lines.map(lineVisualLength);
+    var avgLen = lengths.reduce(function (a, b) { return a + b; }, 0) / lengths.length;
+
+    return lines.map(function (line, idx) {
+      var length = lengths[idx];
+      var newLine = line.slice();
+      var deficit = avgLen - length;
+      if (deficit > 2.5) {
+        var bestIdx = -1, bestPositions = [];
+        newLine.forEach(function (w, i) {
+          var positions = findKashidaPositions(w);
+          if (positions.length > bestPositions.length) { bestIdx = i; bestPositions = positions; }
+        });
+        if (bestIdx !== -1 && bestPositions.length > 0) {
+          newLine[bestIdx] = applyKashida(newLine[bestIdx], maxKashidaPerLine);
+        }
+      }
+      return newLine;
+    });
+  }
+
+  function renderLines(lines) { return lines.map(function (l) { return l.join(' '); }).join('\n'); }
+
+  var MIN_LINES = 2, MAX_LINES = 8;
+
+  function typeset(text, options) {
+    options = options || {};
+    var lineCountOpt = options.lineCount || 'auto';
+    var maxWordsPerLine = options.maxWordsPerLine || 6;
+    var useKashida = options.useKashida !== false;
+
+    var clean = normalizeText(text);
+    var words = tokenize(clean);
+    var meta = { lineCount: 0, maxWordsUsed: maxWordsPerLine, capAdjusted: false, lineCountAdjusted: false, strict: true };
+
+    if (words.length === 0) return { text: '', lines: [], meta: meta };
+    if (words.length === 1) { meta.lineCount = 1; return { text: words[0], lines: [[words[0]]], meta: meta }; }
+
+    var weights = { shapeWeight: 2.4, extremeShortWeight: 3.5 };
+    var totalWords = words.length;
+    var result;
+
+    if (lineCountOpt === 'auto') {
+      var minFeasible = Math.max(MIN_LINES, Math.ceil(totalWords / maxWordsPerLine));
+      var lo = Math.min(minFeasible, MAX_LINES);
+      var bestCost = Infinity, bestResult = null, bestN = lo;
+
+      for (var n = lo; n <= MAX_LINES; n++) {
+        if (n > totalWords) break;
+        var r = partitionInto(words, n, maxWordsPerLine, weights);
+        if (!r.feasible) continue;
+        var normalized = r.cost / n;
+        if (normalized < bestCost) { bestCost = normalized; bestResult = r; bestN = n; }
+      }
+
+      if (!bestResult) {
+        var nFallback = Math.min(MAX_LINES, totalWords);
+        var relaxedCap = Math.max(maxWordsPerLine, Math.ceil(totalWords / nFallback));
+        bestResult = partitionInto(words, nFallback, relaxedCap, weights);
+        bestN = nFallback;
+        meta.maxWordsUsed = relaxedCap;
+        meta.capAdjusted = relaxedCap > maxWordsPerLine;
+      }
+      result = bestResult;
+      meta.lineCount = bestN;
+    } else {
+      var nLines = Math.max(1, Math.min(MAX_LINES, parseInt(lineCountOpt, 10)));
+      if (nLines > totalWords) { nLines = totalWords; meta.lineCountAdjusted = true; }
+
+      var effectiveCap = maxWordsPerLine;
+      var minRequiredCap = Math.ceil(totalWords / nLines);
+      if (minRequiredCap > effectiveCap) { effectiveCap = minRequiredCap; meta.capAdjusted = true; }
+      meta.maxWordsUsed = effectiveCap;
+      meta.lineCount = nLines;
+
+      result = partitionInto(words, nLines, effectiveCap, weights);
+    }
+
+    meta.strict = result.strict !== false;
+    var lines = result.lines;
+    if (useKashida) lines = refineWithKashida(lines);
+
+    return { text: renderLines(lines), lines: lines, meta: meta };
+  }
+
+  /* =========================================================
+     بخش ۲: اتصال به رابط کاربری
+     ========================================================= */
+
+  var FA_DIGITS = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+  function toFaDigits(value) { return String(value).replace(/[0-9]/g, function (d) { return FA_DIGITS[+d]; }); }
+
+  var els = {
+    textInput: document.getElementById('text-input'),
+    lineCount: document.getElementById('line-count'),
+    maxWords: document.getElementById('max-words'),
+    maxWordsValue: document.getElementById('maxwords-value'),
+    useKashida: document.getElementById('use-kashida'),
+    typesetBtn: document.getElementById('typeset-btn'),
+    outputStats: document.getElementById('output-stats'),
+    outputNote: document.getElementById('output-note'),
+    bubbleText: document.getElementById('bubble-text'),
+    outputText: document.getElementById('output-text'),
+    copyBtn: document.getElementById('copy-btn'),
+    previewFont: document.getElementById('preview-font'),
+    previewSize: document.getElementById('preview-size')
+  };
+
+  var EMPTY_HINT = 'متن را بنویسید و «بچین» را بزنید';
+  var debounceHandle = null;
+  var lastOutput = '';
+
+  function applyPreviewStyle() {
+    els.bubbleText.style.fontFamily = els.previewFont.value;
+    els.bubbleText.style.fontSize = els.previewSize.value + 'px';
+  }
+
+  function buildNote(meta) {
+    var parts = [];
+    if (meta.lineCountAdjusted) {
+      parts.push('کلمات کافی برای تعداد خط انتخابی نبود؛ به ' + toFaDigits(meta.lineCount) + ' خط تنظیم شد.');
+    }
+    if (meta.capAdjusted) {
+      parts.push('برای جا شدن متن، حداکثر کلمه در خط به ' + toFaDigits(meta.maxWordsUsed) + ' افزایش یافت.');
+    }
+    if (!meta.strict) {
+      parts.push('با این تنظیمات، رعایت کامل قوانین شکل ممکن نبود؛ نزدیک‌ترین چیدمان انتخاب شد.');
+    }
+    return parts.join(' ');
+  }
+
+  function runTypeset() {
+    var raw = els.textInput.value;
+    els.maxWordsValue.textContent = toFaDigits(els.maxWords.value);
+
+    if (!raw.trim()) {
+      els.bubbleText.textContent = EMPTY_HINT;
+      els.bubbleText.dataset.empty = 'true';
+      els.outputText.textContent = '';
+      els.outputStats.textContent = '';
+      els.outputNote.classList.remove('is-visible');
+      els.outputNote.textContent = '';
+      els.copyBtn.disabled = true;
+      lastOutput = '';
+      return;
+    }
+
+    var result = typeset(raw, {
+      lineCount: els.lineCount.value,
+      maxWordsPerLine: parseInt(els.maxWords.value, 10),
+      useKashida: els.useKashida.checked
+    });
+
+    lastOutput = result.text;
+    els.outputText.textContent = result.text;
+    els.bubbleText.textContent = result.text;
+    els.bubbleText.dataset.empty = 'false';
+    applyPreviewStyle();
+
+    var lineCount = result.lines.length;
+    var charCount = result.text.replace(/\n/g, '').length;
+    els.outputStats.textContent = toFaDigits(lineCount) + ' خط · ' + toFaDigits(charCount) + ' کاراکتر';
+
+    var note = buildNote(result.meta);
+    if (note) { els.outputNote.textContent = note; els.outputNote.classList.add('is-visible'); }
+    else { els.outputNote.textContent = ''; els.outputNote.classList.remove('is-visible'); }
+
+    els.copyBtn.disabled = result.text === '';
+  }
+
+  function scheduleTypeset() {
+    clearTimeout(debounceHandle);
+    debounceHandle = setTimeout(runTypeset, 180);
+  }
+
+  els.textInput.addEventListener('input', scheduleTypeset);
+  els.lineCount.addEventListener('change', scheduleTypeset);
+  els.maxWords.addEventListener('input', scheduleTypeset);
+  els.useKashida.addEventListener('change', scheduleTypeset);
+  els.typesetBtn.addEventListener('click', runTypeset);
+
+  els.previewFont.addEventListener('change', applyPreviewStyle);
+  els.previewSize.addEventListener('input', applyPreviewStyle);
+
+  /* ---------- کپی متن خروجی ---------- */
+
+  function fallbackCopy(text) {
+    var temp = document.createElement('textarea');
+    temp.value = text;
+    temp.style.position = 'fixed';
+    temp.style.opacity = '0';
+    document.body.appendChild(temp);
+    temp.focus();
+    temp.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(temp);
+    return ok;
+  }
+
+  function showCopied() {
+    var original = els.copyBtn.textContent;
+    els.copyBtn.textContent = 'کپی شد ✓';
+    els.copyBtn.classList.add('is-copied');
+    setTimeout(function () {
+      els.copyBtn.textContent = original;
+      els.copyBtn.classList.remove('is-copied');
+    }, 1600);
+  }
+
+  els.copyBtn.addEventListener('click', function () {
+    if (!lastOutput) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(lastOutput).then(showCopied, function () {
+        if (fallbackCopy(lastOutput)) showCopied();
+      });
+    } else {
+      if (fallbackCopy(lastOutput)) showCopied();
+    }
+  });
+
+  /* ---------- مقداردهی اولیه ---------- */
+
+  applyPreviewStyle();
+  runTypeset();
+
+})();
+</script>
+
+</body>
+</html>
